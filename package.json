@@ -1,5 +1,7 @@
 {
   "name": "online_course_platform",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "admin-lte": "^3.0.4"
+  }
 }
