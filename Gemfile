@@ -44,12 +44,14 @@ gem 'font-awesome-rails'
 gem 'grape'
 gem 'grape-entity'
 gem 'jquery-rails'
+gem 'money'
 gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'factory_bot_rails', require: false
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rubocop', '~> 0.82.0', require: false
 end
