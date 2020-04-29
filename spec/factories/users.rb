@@ -5,6 +5,7 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  admin                  :boolean          default(FALSE)
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  remember_created_at    :datetime
@@ -20,5 +21,11 @@
 #
 FactoryBot.define do
   factory :user do
+    sequence(:email) { |n| "user_#{n}@snapask.test" }
+    password { 'secretsecret' }
+
+    trait :admin do
+      admin { true }
+    end
   end
 end

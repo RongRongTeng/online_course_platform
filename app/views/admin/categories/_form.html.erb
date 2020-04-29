@@ -1,0 +1,7 @@
+<%= simple_form_for [:admin, category] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :course_ids, as: :check_boxes, collection: Course.all, checked: category.course_ids %>
+
+  <%= f.submit class: 'btn btn-default btn-sm float-right' %>
+<% end %>

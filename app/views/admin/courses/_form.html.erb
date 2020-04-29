@@ -1,0 +1,24 @@
+<%= simple_form_for [:admin, course] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description, as: :text %>
+  <%= f.input :url, as: :url %>
+  <div class='row'>
+    <div class='col-sm-6'>
+      <%= f.input :currency, collection: Money::Currency.all.map(&:iso_code) %>
+    </div>
+    <div class='col-sm-6'>
+      <%= f.input :price, as: :decimal %>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-sm-6'>
+      <%= f.input :starts_at, as: :datetime, html5: true %>
+    </div>
+    <div class='col-sm-6'>
+      <%= f.input :ends_at, as: :datetime, html5: true %>
+    </div>
+  </div>
+  <%= f.input :expiry_period, as: :integer, input_html: { min: 1, max: 30 } %>
+  <%= f.input :category_ids, as: :check_boxes, collection: Category.all, checked: course.category_ids %>
+  <%= f.submit class: 'btn btn-default btn-sm float-right' %>
+<% end %>
