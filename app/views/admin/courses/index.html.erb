@@ -1,0 +1,7 @@
+<%= render 'shared/page_header', header: t('.courses') %>
+
+<div class='content px-2'>
+  <%= link_to t('.new'), new_admin_course_path, class: 'btn btn-default btn-sm float-right' %>
+  
+  <%= render 'table', courses: @courses %>
+</div>
