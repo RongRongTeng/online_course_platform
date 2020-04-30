@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "a07adec4-4352-4a13-9351-969d19135456",
+		"name": "online_course_platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/v1/courses?api_token=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"courses"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Courses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/v1/user_courses?api_token=",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"user_courses"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": ""
+						},
+						{
+							"key": "available",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "category_id",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Courses Purchase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/v1/courses/purchase?api_token=&course_id=1&payment_method=credit_card",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"courses",
+						"purchase"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": ""
+						},
+						{
+							"key": "course_id",
+							"value": "1"
+						},
+						{
+							"key": "payment_method",
+							"value": "credit_card"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/v1/authentications/token?email=test_user1@snapask.test&password=secretsecret",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"authentications",
+						"token"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "test_user1@snapask.test"
+						},
+						{
+							"key": "password",
+							"value": "secretsecret"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "cfefb267-ecb3-4dbb-a6bc-8405028c818f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ca40b363-51c8-479d-9eb6-24aaec7e718c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -10,7 +10,8 @@
 
 # Test User
 User.create!(email: 'admin_user@snapask.test', password: 'adminadmin', admin: true)
-User.create!(email: 'test_user@snapask.test',  password: 'secretsecret')
+user_one = User.create!(email: 'test_user1@snapask.test',  password: 'secretsecret')
+user_two = User.create!(email: 'test_user2@snapask.test',  password: 'secretsecret')
 
 # Test Courses and Categories
 courses = [
@@ -45,4 +46,26 @@ course_categories = [
 ]
 course_categories.each do |course_category|
   CourseCategory.create!(course_category)
+end
+
+# Test User Courese and Payments
+user_payments = [
+  { id: 1, user: user_one, payment_method: :atm,
+    currency: 'TWD', price: '100', purchased_at: '2020-04-01 00:00:00' },
+  { id: 2, user: user_one, payment_method: :atm,
+    currency: 'TWD', price: '120', purchased_at: '2020-04-28 00:00:00' },
+  { id: 3, user: user_two, payment_method: :credit_card,
+    currency: 'TWD', price: '120', purchased_at: '2020-04-28 00:00:00' }
+]
+user_payments.each do |user_payment|
+  UserPayment.create!(user_payment)
+end
+
+user_courses = [
+  { user: user_one, course_id: 1, payment_id: 1, expires_at: '2020-04-02 00:00:00', is_used: true },
+  { user: user_one, course_id: 1, payment_id: 2, expires_at: '2020-04-30 00:00:00' },
+  { user: user_two, course_id: 2, payment_id: 3, expires_at: '2020-04-30 00:00:00' }
+]
+user_courses.each do |user_course|
+  UserCourse.create!(user_course)
 end
