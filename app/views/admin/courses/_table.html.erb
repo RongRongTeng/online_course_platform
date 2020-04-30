@@ -1,0 +1,43 @@
+<div class="table-responsive" style="overflow: auto">
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><%= t('.id') %></th>
+        <th><%= t('.for_sale?') %></th>
+        <th><%= t('.title') %></th>
+        <th><%= t('.description') %></th>
+        <th><%= t('.url') %></th>
+        <th><%= t('.currency') %></th>
+        <th><%= t('.price') %></th>
+        <th><%= t('.starts_at') %></th>
+        <th><%= t('.ends_at') %></th>
+        <th><%= t('.expiry_period') %></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% courses.each do |course| %>
+        <tr>
+          <td><%= link_to course.id, admin_course_path(course) %></td>
+          <td><%= true_false_label course.for_sale? %></td>
+          <td><%= course.title %></td>
+          <td><%= course.description %></td>
+          <td><%= course.url %></td>
+          <td><%= course.currency %></td>
+          <td><%= course.price %></td>
+          <td><%= course.starts_at %></td>
+          <td><%= course.ends_at %></td>
+          <td><%= day_inspect course.expiry_period %></td>
+
+          <td>
+            <div class='btn-group-sm'>
+              <%= link_to t('.edit'), edit_admin_course_path(course), class: 'btn btn-default' %>
+              <%= link_to t('.delete'), admin_course_path(course), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

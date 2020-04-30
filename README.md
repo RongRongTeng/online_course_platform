@@ -1,24 +1,93 @@
-# README
+# Online Course Platform
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Demo](https://rong-online-course-platform.herokuapp.com/)
 
-Things you may want to cover:
+- Web-Based tool for admin to manage online courses
+- [Grape](https://github.com/ruby-grape/grape) API 
+    - For user to view online courses
+    - For user to purchase online courses
+    - For user to view user courses
+  
 
-* Ruby version
 
-* System dependencies
+## Requirement
 
-* Configuration
+- ruby 2.6.3
+- rails 5.2.3
+- postgres
 
-* Database creation
 
-* Database initialization
+### Update configuration files
 
-* How to run the test suite
+```
+setup .env file (or .env.development), refer to the example file at .env.example
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Install Gem and Setup Database
 
-* Deployment instructions
+```
+bundle install
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:seed
+```
 
-* ...
+### Run the server
+
+Just run the rails command to start the server
+
+```
+bundle exec rails s
+```
+
+Then visit http://localhost:3000
+
+
+### Testing
+
+```
+bundle exec rspec
+```
+
+### Try it! 🔥🔥
+
+```
+     POST  |  /api/:version/authentications/token(.json)  |  v1  |  Authenticate user and retrieve authentication token
+      GET  |  /api/:version/courses(.json)                |  v1  |  Return list of courses for sale                    
+      GET  |  /api/:version/courses/:id(.json)            |  v1  |  Return a specific course for sale                  
+     POST  |  /api/:version/courses/purchase(.json)       |  v1  |  Purchase a course and return purchase record       
+      GET  |  /api/:version/user_courses(.json)           |  v1  |  Return list of user courses                        
+      GET  |  /api/:version/user_courses/:id(.json)       |  v1  |  Return a specific user course 
+```
+
+#### Method 1
+If you use [Postman](https://www.postman.com/), that's perfert! 👍 [Download](https://github.com/RongRongTeng/online_course_platform/blob/develop/online_course_platform.postman_collection.json) and import the API collections.
+
+#### Method 2
+
+use [curl](https://curl.haxx.se/docs/manpage.html)
+
+
+---
+
+
+❗️**Assuming that you already signed up with you email**❗️
+
+Use you API token for authorization. 
+
+Get it with ➡️ `POST /api/v1/authentications/token?email={your_email}&password:{your_passord}`
+
+You can use test user to try!
+```
+email: test_user1@snapask.com
+password: secretsecret
+```
+
+You need to add `{ api_token: your_api_token }` in params for other APIs to authenticate.
+
+
+## Author
+
+- **Ya-Rong, Teng** - [RongRongTeng](https://github.com/RongRongTeng)
+
+

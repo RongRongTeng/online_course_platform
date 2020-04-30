@@ -1,0 +1,31 @@
+<%= render 'shared/page_header', header: t('.categories') %>
+
+<div class='content px-2'>
+  <%= link_to t('.new'), new_admin_category_path, class: 'btn btn-default btn-sm float-right' %>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><%= t('.id') %></th>
+        <th><%= t('.name') %></th>
+        <th><%= t('.description') %></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= link_to category.id, admin_category_path(category) %></td>
+          <td><%= category.name %></td>
+          <td><%= category.description %></td>
+          <td>
+            <div class='btn-group-sm'>
+              <%= link_to t('.edit'), edit_admin_category_path(category), class: 'btn btn-default' %>
+              <%= link_to t('.delete'), admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
