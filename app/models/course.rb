@@ -28,8 +28,14 @@ class Course < ApplicationRecord
   has_many :course_categories, dependent: :destroy
   has_many :categories, through: :course_categories
 
+  scope :for_sale, ->(now = DateTime.current) { where('starts_at <= ? AND ends_at > ?', now, now) }
+
   def for_sale?
-    now = DateTime.now.in_time_zone
+    now = DateTime.current
     now >= starts_at && ends_at > now
+  end
+
+  def expiry_day
+    expiry_period.day
   end
 end
