@@ -36,4 +36,10 @@ RSpec.describe Course, type: :model do
       it { is_expected.to be_falsey }
     end
   end
+
+  describe '#expiry_day' do
+    subject { course.expiry_day }
+
+    it { is_expected.to eq 1.day }
+  end
 end
